@@ -44,7 +44,7 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-     if (ssn != null || !ssn.isEmpty()){
+     if (ssn != null && !ssn.isEmpty()){
         this.ssn = ssn;
      } else{
          System.out.println("Enter valid number");

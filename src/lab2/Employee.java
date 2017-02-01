@@ -31,9 +31,12 @@ public class Employee {
     private Date orientationDate;
 
     public Employee(String firstName, String lastName, String ssn) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ssn = ssn;
+        //this.firstName = firstName;
+        //this.lastName = lastName;
+        //this.ssn = ssn;
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setSsn(ssn);
     }
 
     // Assume this must be performed first, and assume that an employee
@@ -75,6 +78,13 @@ public class Employee {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         return sdf.format(orientationDate);
     }
+    
+    public void hiringStatusOfEmployee(){
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
+    }
 
     public String getFirstName() {
         return firstName;
@@ -84,7 +94,12 @@ public class Employee {
     // allowed through validation.
     
     public void setFirstName(String firstName) {
-       this.firstName = firstName;
+       if (firstName != null && !firstName.isEmpty()){
+          this.firstName = firstName; 
+       }
+       else {
+           System.out.println("Enter valid first name");
+       }
     }
 
     public String getLastName() {
@@ -92,7 +107,13 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-       this.lastName = lastName;
+       if (firstName != null && !firstName.isEmpty()){
+          this.lastName = lastName;
+       }
+        else {
+            System.out.println("Enter valid last name");   
+           }
+
     }
 
     public String getSsn() {
@@ -100,7 +121,12 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+       if (firstName != null && firstName.length() == 9){
+          this.ssn = ssn;
+       } 
+       else{
+           System.out.println("Ener valid ssn");
+       }
     }
 
     public boolean isMetWithHr() {

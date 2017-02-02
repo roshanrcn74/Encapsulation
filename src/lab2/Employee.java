@@ -82,7 +82,7 @@ public class Employee {
         return sdf.format(orientationDate);
     }
     
-    public void doOroentation(){
+    public void doOrientation(){
         if (!this.metWithHr){
            this.meetWithHrForBenefitAndSalryInfo();
         }

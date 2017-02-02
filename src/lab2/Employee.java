@@ -75,13 +75,17 @@ public class Employee {
     }
     
     private String getFormatedDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         return sdf.format(orientationDate);
     }
     
     public void hiringStatusOfEmployee(){
-        this.meetWithHrForBenefitAndSalryInfo();
-        this.meetDepartmentStaff();
+        if (!this.metWithHr){
+           this.meetWithHrForBenefitAndSalryInfo();
+        }
+        if (!this.metDeptStaff){
+            this.meetDepartmentStaff();   
+        }
         this.reviewDeptPolicies();
         this.moveIntoCubicle(cubeId);
     }
@@ -121,8 +125,8 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-       if (firstName != null && firstName.length() == 9){
-          this.ssn = ssn;
+       if (ssn != null && ssn.replaceAll("\\s+","").trim().length() == 9){
+          this.ssn = ssn.replaceAll("\\s+","").trim();
        } 
        else{
            System.out.println("Ener valid ssn");
@@ -177,4 +181,6 @@ public class Employee {
 
     public void setOrientationDate(Date orientationDate) {
         this.orientationDate = orientationDate;
-    }}
+    }
+}
+

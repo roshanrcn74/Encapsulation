@@ -41,15 +41,15 @@ public class Employee {
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
         System.out.println(firstName + " " + lastName + " met with Hr on "
             + getFormatedDate());
     }
 
-    // Assume this must be performed Second, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         metDeptStaff = true;
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
             + getFormatedDate());
@@ -58,8 +58,9 @@ public class Employee {
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
-    public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
+    private void reviewDeptPolicies() {
+        //reviewedDeptPolicies = true;
+        setReviewedDeptPolicies(true);
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
             + getFormatedDate());
     }
@@ -67,9 +68,11 @@ public class Employee {
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
-    public void moveIntoCubicle(String cubeId) {
-        this.cubeId = cubeId;
-        this.movedIn = true;        
+    private void moveIntoCubicle(String cubeId) {
+        setMovedIn(true);
+        setCubeId(cubeId);
+        //this.cubeId = cubeId;
+        //this.movedIn = true;        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
                 + cubeId + " on " + getFormatedDate());
     }
@@ -79,7 +82,7 @@ public class Employee {
         return sdf.format(orientationDate);
     }
     
-    public void hiringStatusOfEmployee(){
+    public void doOroentation(){
         if (!this.metWithHr){
            this.meetWithHrForBenefitAndSalryInfo();
         }
@@ -129,7 +132,11 @@ public class Employee {
           this.ssn = ssn.replaceAll("\\s+","").trim();
        } 
        else{
-           System.out.println("Ener valid ssn");
+           if (ssn == null){
+              System.out.println("Ener valid ssn : "); 
+           } else{
+              System.out.println("Ener valid ssn : " + ssn.replaceAll("\\s+","").trim()); 
+           }   
        }
     }
 
@@ -138,7 +145,7 @@ public class Employee {
     }
 
     // boolean parameters need no validation
-    public void setMetWithHr(boolean metWithHr) {
+    private void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
 
@@ -146,7 +153,7 @@ public class Employee {
         return metDeptStaff;
     }
 
-    public void setMetDeptStaff(boolean metDeptStaff) {
+    private void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
     }
 
@@ -154,7 +161,7 @@ public class Employee {
         return reviewedDeptPolicies;
     }
 
-    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+    private void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
 
@@ -162,7 +169,7 @@ public class Employee {
         return movedIn;
     }
 
-    public void setMovedIn(boolean movedIn) {
+    private void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
     }
 

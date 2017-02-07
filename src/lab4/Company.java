@@ -10,14 +10,14 @@ package lab4;
  * @author roshann
  */
 public class Company {
-    private HRDepartment hiringResources;
+    private final HRDepartment hireResources;
 
     public Company() {
-        //HiringAgency hiringResources = new HiringAgency();
+        hireResources = new HRDepartment();
     }
     
     public void hireEmployee(String fName, String lName, String ssn, String cubeID){
-        HRDepartment hiringResources = new HRDepartment();
-        hiringResources.hirePerson(fName, lName, ssn, cubeID);
+        //HRDepartment hiringResources = new HRDepartment();
+        hireResources.hirePerson(fName, lName, ssn, cubeID);
     }    
 }

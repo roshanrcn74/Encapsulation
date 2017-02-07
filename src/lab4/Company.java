@@ -19,6 +19,5 @@ public class Company {
     public void hireEmployee(String fName, String lName, String ssn, String cubeID){
         HRDepartment hiringResources = new HRDepartment();
         hiringResources.hirePerson(fName, lName, ssn, cubeID);
-    }
-    
+    }    
 }

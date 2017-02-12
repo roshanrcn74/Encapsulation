@@ -13,21 +13,21 @@ import java.util.List;
  * @author roshann
  */
 public class HRDepartment {
-    private List<Employee> employee;
+    private List<Employee> empList;
     private String cubeID = "";
 
     public HRDepartment() {
-        this.employee = new ArrayList();
+        this.empList = new ArrayList();
     }
-  
+    // get the employee details and add to the array list 
     public void hirePerson(String fName, String lName, String ssn){
         Employee employee = new Employee(fName, lName, ssn);
         employee.setCubeId(assignCubeId());
-        this.employee.add(employee);
+        this.empList.add(employee);
         //employee.doFirstTimeOrientation(assignCubeId());
         //employee.getReportService().outputReport();       
     } 
-    
+    // assign new cube id to the employee
     public String assignCubeId(){
         String cubeId = "A01";
         if ("".equalsIgnoreCase(this.cubeID)){
@@ -40,32 +40,35 @@ public class HRDepartment {
 
         return cubeId;      
     }
-    
+    // return the employee base on ssn
     public Employee getEmployee(String ssn){
         int index = 0;
-        while (employee.size() > index) {
-	 if (employee.get(index).getSsn().equals(ssn)){
-             return employee.get(index);
+        while (empList.size() > index) {
+	 if (empList.get(index).getSsn().equals(ssn)){
+             return empList.get(index);
             }
                 index++;
         }
        return null; 
     }
     
+    // call employee for Oruentation
     public void doOrientation(Employee emp){
         if (emp != null ){
             emp.doFirstTimeOrientation(assignCubeId());
-            getEmployeeOrientationReport(emp);
+            //getEmployeeOrientationReport(emp);
         }
         
     }
     
+    //get employee orientation report
     public void getEmployeeOrientationReport(Employee emp){
         emp.getReportService().outputReport();
     }
-
-    public List<Employee> getEmployee() {
-        return employee;
+    
+    //get employee list
+    public List<Employee> getEmpList() {
+        return empList;
     }
     
 }

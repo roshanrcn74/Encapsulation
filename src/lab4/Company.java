@@ -5,27 +5,23 @@
  */
 package lab4;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author roshann
  */
 public class Company {
-    private final HRDepartment hireResources;
+    private HRDepartment hrDepartment;
 
     public Company() {
-        hireResources = new HRDepartment();
+        hrDepartment = new HRDepartment();
     }
-    
+    // delegate employee details to hr department
     public void hireEmployee(String fName, String lName, String ssn){
-        //HRDepartment hiringResources = new HRDepartment();
-        hireResources.hirePerson(fName, lName, ssn);
-        
+        hrDepartment.hirePerson(fName, lName, ssn);    
     }
-
-    public HRDepartment getHireResources() {
-        return hireResources;
+    // 
+    public HRDepartment getHrDepartment() {
+        return hrDepartment;
     }
     
 }

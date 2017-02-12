@@ -5,6 +5,8 @@
  */
 package lab4;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author roshann
@@ -16,8 +18,14 @@ public class Company {
         hireResources = new HRDepartment();
     }
     
-    public void hireEmployee(String fName, String lName, String ssn, String cubeID){
+    public void hireEmployee(String fName, String lName, String ssn){
         //HRDepartment hiringResources = new HRDepartment();
-        hireResources.hirePerson(fName, lName, ssn, cubeID);
-    }    
+        hireResources.hirePerson(fName, lName, ssn);
+        
+    }
+
+    public HRDepartment getHireResources() {
+        return hireResources;
+    }
+    
 }

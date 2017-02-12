@@ -1,5 +1,6 @@
 package lab4;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,8 @@ public class Startup {
     public static void main(String[] args) {
         
         Company abc = new Company();
-         //abc.hireEmployee("Binuth", "Nanayakkara", "643-23-3070");
+        
+         // input employee details for hire
         Scanner input = new Scanner(System.in);
         String ans = "";
         do {
@@ -32,13 +34,16 @@ public class Startup {
             
         }while(!"N".equalsIgnoreCase(ans));
         
+        // send hired employee for orientation 
+        
         ans = "";
         int index = 0;
+        List<Employee> empList = abc.getHrDepartment().getEmpList();
         do{
-            if (abc.getHireResources().getEmployee().size() > index){
-                String cube = abc.getHireResources().getEmployee().get(index).getCubeId();
-                abc.getHireResources().getEmployee().get(index).doFirstTimeOrientation(cube);
-                abc.getHireResources().getEmployee().get(index).getReportService().outputReport();
+            if (empList.size() > index){
+                String cubeId = empList.get(index).getCubeId();
+                empList.get(index).doFirstTimeOrientation(cubeId);
+                empList.get(index).getReportService().outputReport();
             }else {
                 System.out.println("No more employes to send orientation ");
             }
